@@ -52,8 +52,7 @@ public class BookApiService implements IBookApiService {
 				favoriteDto.getBookId());
 		if (favorite.isPresent()) {
 			final Favorite favoriteToEdit = favorite.get();
-			favoriteToEdit.setFavorite(false);
-			return new FavoriteDto(favoriteRepository.save(favoriteToEdit));
+			favoriteRepository.delete(favoriteToEdit);
 		}
 		return favoriteDto;
 	}
