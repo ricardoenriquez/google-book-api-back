@@ -19,12 +19,17 @@ public class BookDto implements Serializable {
 
 	private Boolean favorite = false;
 
+	private String subtitle;
+
+	private String infoLink;
+
 	public BookDto(String path, JsonParseUtil json) {
 
-		// Retrieves the test
 		this.bookId = json.read(path, "id", String.class);
 		this.title = json.read(path, "volumeInfo.title", String.class);
 		this.thumbnail = json.read(path, "volumeInfo.imageLinks.thumbnail", String.class);
+		this.subtitle = json.read(path, "volumeInfo.subtitle", String.class);
+		this.infoLink = json.read(path, "volumeInfo.infoLink", String.class);
 	}
 
 	public String getBookId() {
@@ -57,6 +62,22 @@ public class BookDto implements Serializable {
 
 	public void setFavorite(Boolean favorite) {
 		this.favorite = favorite;
+	}
+
+	public String getSubtitle() {
+		return subtitle;
+	}
+
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
+
+	public String getInfoLink() {
+		return infoLink;
+	}
+
+	public void setInfoLink(String infoLink) {
+		this.infoLink = infoLink;
 	}
 
 }
